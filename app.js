@@ -293,3 +293,50 @@ if (requestedProfile) {
   const requestedCard = cards.find(card => card.dataset.profileId === requestedProfile);
   if (requestedCard) showProfile(requestedCard);
 }
+const NOTIF_REPO = "mohdadil1/College-Diaries";
+const bell = document.getElementById("notif-bell");
+const countEl = document.getElementById("notif-count");
+const listEl = document.getElementById("notif-list");
+
+function timeAgo(dateString) {
+  const seconds = Math.floor((Date.now() - new Date(dateString)) / 1000);
+  if (seconds < 60) return "just now";
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) return minutes + " minutes ago";
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return hours + " hours ago";
+  return Math.floor(hours / 24) + " days ago";
+}
+
+async function loadNotifications() {
+  try {
+    const res = await fetch(
+      "https://api.github.com/repos/" + NOTIF_REPO + "/commits?sha=main&per_page=10"
+    );
+    const commits = await res.json();
+    const lastSeen = localStorage.getItem("notifLastSeen") || 0;
+    let unread = 0;
+    listEl.innerHTML = "";
+    commits.forEach(function (c) {
+      const name = c.commit.author.name;
+      const message = c.commit.message.split("\n")[0];
+      const date = c.commit.author.date;
+      if (new Date(date) > new Date(Number(lastSeen))) unread++;
+      const item = document.createElement("div");
+      item.className = "notif-item";
+      item.textContent = name + " contributed: " + message + " — " + timeAgo(date);
+      listEl.appendChild(item);
+    });
+    countEl.textContent = unread;
+  } catch (e) {
+    listEl.textContent = "Could not load notifications.";
+  }
+}
+
+bell.addEventListener("click", function () {
+  listEl.classList.toggle("hidden");
+  localStorage.setItem("notifLastSeen", Date.now());
+  countEl.textContent = 0;
+});
+
+loadNotifications();
