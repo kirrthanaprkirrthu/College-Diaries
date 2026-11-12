@@ -34,6 +34,10 @@ html.dark-mode h6 {
   color: var(--d-text) !important;
 }
 
+html.dark-mode p {
+  color: #c5c7ce !important;
+}
+
 /* Links keep the surrounding text color (nav, brand, buttons) ... */
 html.dark-mode a { color: inherit; }
 
@@ -234,6 +238,39 @@ html.dark-mode #theme-toggle {
   background: var(--d-surface-2) !important;
   border-color: #3d3d44 !important;
   color: #ffd76a !important;
+}
+
+html.dark-mode .menu-toggle {
+  background: var(--d-surface-2);
+  border-color: var(--d-border);
+  color: var(--d-text);
+}
+
+html.dark-mode .site-menu__dropdown {
+  background: var(--d-surface) !important;
+  border-color: var(--d-border) !important;
+}
+
+html.dark-mode .site-menu__dropdown a,
+html.dark-mode .site-menu__dropdown button {
+  background: transparent;
+  border-color: transparent;
+  color: var(--d-text);
+}
+
+html.dark-mode .site-menu__dropdown a:hover,
+html.dark-mode .site-menu__dropdown button:hover {
+  background: var(--d-surface-2);
+}
+
+html.dark-mode .site-menu__dropdown hr {
+  border-color: var(--d-border);
+}
+
+html.dark-mode #quote-button {
+  background: var(--d-accent);
+  border-color: var(--d-accent);
+  color: #1a1a1a;
 }
 
 html.dark-mode .profile-actions .copy-profile-link {

@@ -3,6 +3,8 @@ const projectGrid = document.querySelector('#project-grid');
 const modal = document.querySelector('#modal');
 const content = document.querySelector('#modal-content');
 const search = document.querySelector('#search');
+const menuToggle = document.querySelector('#menu-toggle');
+const menuPanel = document.querySelector('#site-menu-panel');
 const cards = [...grid.querySelectorAll('.card')];
 const quoteButton = document.querySelector('#quote-button');
 const quoteOutput = document.querySelector('#coding-quote');
@@ -111,6 +113,11 @@ function render() {
   }
 
   document.querySelector('#empty').hidden = visibleCount > 0;
+}
+
+function setMenuOpen(isOpen) {
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
+  menuPanel.hidden = !isOpen;
 }
 
 function showProfile(card) {
@@ -267,6 +274,21 @@ git push -u origin profile/your-name</pre>
 }
 
 search.addEventListener('input', render);
+menuToggle.addEventListener('click', () => {
+  setMenuOpen(menuPanel.hidden);
+});
+menuPanel.addEventListener('click', event => {
+  if (event.target.closest('a')) setMenuOpen(false);
+});
+document.addEventListener('click', event => {
+  if (!menuToggle.parentElement.contains(event.target)) setMenuOpen(false);
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && !menuPanel.hidden) {
+    setMenuOpen(false);
+    menuToggle.focus();
+  }
+});
 quoteButton.addEventListener('click', () => {
   const availableQuotes = codingQuotes
     .map((quote, index) => ({ quote, index }))
@@ -288,7 +310,6 @@ grid.addEventListener('click', event => {
   const button = event.target.closest('.view');
   if (button) showProfile(button.closest('.card'));
 });
-document.querySelector('#guide').addEventListener('click', showGuide);
 document.querySelector('#guide2').addEventListener('click', showGuide);
 document.querySelector('.close').addEventListener('click', () => modal.close());
 

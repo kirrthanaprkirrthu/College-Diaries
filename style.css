@@ -40,11 +40,24 @@ footer {
 }
 
 header {
-    padding: 30px 26px;
+    position: relative;
+    padding: 18px 26px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #dedfd5
+}
+
+.brand-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px
+}
+
+.brand-lockup img {
+    display: block;
+    width: auto;
+    height: 56px
 }
 
 .brand {
@@ -57,22 +70,82 @@ header {
     color: #607949
 }
 
-nav {
+.header-actions {
     display: flex;
-    gap: 30px;
     align-items: center;
-    font-size: 14px
+    gap: 12px;
+    margin-left: auto
 }
 
-nav>a,
-nav button {
+.site-menu {
+    position: relative;
+    z-index: 20
+}
+
+.menu-toggle,
+.site-menu__dropdown a,
+.site-menu__dropdown button {
     display: inline-flex;
     align-items: center;
-    background: none;
+    background: #fff;
     border: 1px solid #283924;
     border-radius: 30px;
-    padding: 12px 20px;
+    color: #202820;
+    font: inherit;
     white-space: nowrap
+}
+
+.menu-toggle {
+    gap: 8px;
+    padding: 11px 17px;
+    font-weight: 700
+}
+
+.site-menu__dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: max-content;
+    min-width: 220px;
+    max-width: calc(100vw - 32px);
+    max-height: min(80vh, 520px);
+    overflow-y: auto;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #dedfd5;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px #20282026
+}
+
+.site-menu__dropdown[hidden] {
+    display: none
+}
+
+.site-menu__dropdown a,
+.site-menu__dropdown button {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 12px;
+    border-color: transparent;
+    border-radius: 8px;
+    background: transparent;
+    text-align: left;
+    cursor: pointer
+}
+
+.site-menu__dropdown a:hover,
+.site-menu__dropdown button:hover {
+    background: #eef1e6
+}
+
+.site-menu__dropdown hr {
+    width: 100%;
+    margin: 4px 0;
+    border: 0;
+    border-top: 1px solid #dedfd5
 }
 
 .hero {
@@ -162,13 +235,14 @@ p {
     margin: 8px 0 0
 }
 
-.quote-button {
+#quote-button {
     flex: 0 0 auto;
     border: 1px solid #283924;
     border-radius: 30px;
     padding: 12px 18px;
     background: #283d29;
-    color: white
+    color: white;
+    cursor: pointer
 }
 
 #students {
@@ -379,7 +453,8 @@ h2 span {
     height: 230px;
     background: var(--tint);
     position: relative;
-    overflow: hidden
+    overflow: hidden;
+    isolation: isolate
 }
 
 .portrait img {
@@ -390,6 +465,7 @@ h2 span {
 
 .course {
     position: absolute;
+    z-index: 1;
     bottom: 14px;
     left: 16px;
     background: #ffffffeb;
@@ -724,31 +800,31 @@ body[data-theme="dark"] .theme-toggle-track {
 }
 
 @media(max-width:560px) {
-    header img{
-        height: 80px;
-        
-
-    }
     header {
-        padding: 2px 20px;
-        display: flex;
-        flex-direction: column;
+        padding: 10px 14px;
+        gap: 10px
     }
 
-    nav {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 8px
+    .brand-lockup {
+        gap: 7px
     }
 
-    nav>a,
-    nav button {
-        padding: 9px 12px;
-        font-size: 12px
+    .brand-lockup img {
+        height: 38px
     }
 
     .brand {
-        font-size: 21px
+        font-size: 18px
+    }
+
+    .header-actions {
+        gap: 7px
+    }
+
+    .menu-toggle {
+        gap: 6px;
+        padding: 9px 11px;
+        font-size: 13px
     }
 
     .hero {
@@ -760,6 +836,10 @@ body[data-theme="dark"] .theme-toggle-track {
         padding: 18px;
         align-items: flex-start;
         flex-direction: column
+    }
+
+    #quote-button {
+        align-self: flex-start
     }
 
     .hero h1 {

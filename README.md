@@ -8,6 +8,7 @@ A beginner-friendly, student-built website where students share their profiles, 
 - Share a diary with the browser's sharing menu or copy its profile link
 - Search by name, skill, or interest
 - Filter profiles by course
+- Responsive homepage menu with Home, Students, and Contribution Guide shortcuts
 - Beginner-friendly project ideas with GitHub Discussions links
 - Completed project showcases with team credits and repository or demo links
 - An interactive C programming quiz with explanations and a score summary
