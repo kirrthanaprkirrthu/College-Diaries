@@ -14,26 +14,56 @@
 
 <body>
   <header>
-   
-    <img src="images/DSU logo.PNG" alt="DSU logo" height="200px" >
-    <a class="brand" href="#">College<span>Diaries.</span></a>
-    <nav>
-      <a href="#students">The students</a>
-      <a href="#projects">Project ideas</a>
-      <a href="quiz.html" target="_blank" rel="noopener noreferrer">C quiz</a>
-      <a href="classmate-game.html">Guess a classmate</a>
-      <a href="space-fight.html">Space-Fight</a>
-      <a href="profile-builder.html">Build a profile</a>
-      <button id="guide">Contribute ↗</button>
-      <button onclick="location.href='about.html'">About Us</button>
-       
-      <button id="theme-toggle" type="button" aria-pressed="false">
-  Dark mode
-</button>
-    </nav>
+    <a class="brand-lockup" href="#home">
+      <img src="images/DSU logo.PNG" alt="DSU logo">
+      <span class="brand">College<span>Diaries.</span></span>
+    </a>
+    <div class="header-actions">
+      <div class="contribution-widget">
+        <button
+          id="contributionBell"
+          class="contribution-bell"
+          aria-label="View contributions"
+          aria-expanded="false"
+          aria-controls="contributionPanel">
+          🔔
+          <span id="notificationCount" class="notification-count" hidden>0</span>
+        </button>
+        <div id="contributionPanel" class="contribution-panel" hidden>
+          <div class="contribution-header">
+            <h3>Recent Contributions</h3>
+            <button id="closeContributions" class="close-contributions" aria-label="Close">&times;</button>
+          </div>
+          <ul id="contributionList" class="contribution-list">
+            <li>Loading contributions...</li>
+          </ul>
+          <a class="contribution-footer" href="https://github.com/mohdadil1/College-Diaries"
+            target="_blank" rel="noopener noreferrer">View all contributions →</a>
+        </div>
+      </div>
+      <nav class="site-menu" aria-label="Main navigation">
+        <button id="menu-toggle" class="menu-toggle" type="button" aria-expanded="false"
+          aria-controls="site-menu-panel">
+          <span aria-hidden="true">☰</span> Menu
+        </button>
+        <div id="site-menu-panel" class="site-menu__dropdown" hidden>
+          <a href="#home">Home</a>
+          <a href="#students">Students</a>
+          <a href="#contribute">Contribution Guide</a>
+          <hr>
+          <a href="#projects">Project ideas</a>
+          <a href="quiz.html" target="_blank" rel="noopener noreferrer">C quiz</a>
+          <a href="classmate-game.html">Guess a classmate</a>
+          <a href="space-fight.html">Space-Fight</a>
+          <a href="profile-builder.html">Build a profile</a>
+          <a href="about.html">About Us</a>
+          <button id="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
+        </div>
+      </nav>
+    </div>
   </header>
   <main>
-    <section class="hero">
+    <section id="home" class="hero">
       <div class="eyebrow">A STUDENT-BUILT OPEN SOURCE PROJECT</div>
       <h1>Different people.<br>One <em>college diary.</em></h1>
       <p>A little about us. What we love, what we’re building,<br class="desktop"> and the stories we’ll take beyond
@@ -103,7 +133,14 @@
               <span>Html</span>
               <span>css</span>
               <span>java script</span>
-            <img src="images/priyanka-nagesh.jpg" alt="Priyanka nagesh profile image">
+            </div>
+            <p class="story" hidden>BCA AI-DS student ,dream big,code bigger!</p>
+            <div class="card-bottom"><span>A story in progress</span><button class="view" type="button">View diary ↗</button></div>
+          </div>
+        </article>
+        <article class="card" data-course="BCA">
+          <div class="portrait" style="--tint: #e1e8d9">
+            <img src="images/priyanka-nagesh.jpg" alt="Priyanka Nagesh profile image">
             <span class="course">BCA</span>
           </div>
           <div class="card-body">
@@ -114,6 +151,13 @@
               <span>Humm</span>
               <span>css</span>
               <span>java script</span>
+            </div>
+            <p class="story" hidden>BCA AI-DS student Small steps,BLbig dreams</p>
+            <div class="card-bottom"><span>A story in progress</span><button class="view" type="button">View diary ↗</button></div>
+          </div>
+        </article>
+        <article class="card" data-course="BCA">
+          <div class="portrait" style="--tint: #e1e8d9">
             <img src="images/bhargavi-m.jpg" alt="Bhargavi M profile image">
             <span class="course">BCA</span>
           </div>
@@ -564,7 +608,7 @@
       </div>
       <div id="project-grid" class="project-grid" aria-live="polite"></div>
     </section>
-    <section class="contribute">
+    <section id="contribute" class="contribute">
       <div>
         <div class="eyebrow">YOUR FIRST PULL REQUEST STARTS HERE</div>
         <h2>Turn “hello world”<br>into “hello, everyone.”</h2>
@@ -586,56 +630,6 @@
   <script src="projects.js"></script>
   <script src="app.js"></script>
   <script src="theme-toggle.js"></script>
-
-  <div class="contribution-widget">
-
-    <button
-        id="contributionBell"
-        class="contribution-bell"
-        aria-label="View contributions"
-        aria-expanded="false"
-        aria-controls="contributionPanel">
-        🔔
-
-        <span id="notificationCount"
-              class="notification-count"
-              hidden>
-            0
-        </span>
-    </button>
-
-    <div
-        id="contributionPanel"
-        class="contribution-panel"
-        hidden>
-
-        <div class="contribution-header">
-            <h3>Recent Contributions</h3>
-
-            <button
-                id="closeContributions"
-                class="close-contributions"
-                aria-label="Close">
-                &times;
-            </button>
-        </div>
-
-        <ul id="contributionList"
-            class="contribution-list">
-            <li>Loading contributions...</li>
-        </ul>
-
-        <a
-            class="contribution-footer"
-            href="https://github.com/mohdadil1/College-Diaries"
-            target="_blank"
-            rel="noopener noreferrer">
-            View all contributions →
-        </a>
-
-      </div>
-
-</div>
 
 <script src="contributions.js"></script>
 
